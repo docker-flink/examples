@@ -1,0 +1,23 @@
+images:
+  flink: docker.io/plucas/flink:1.2.0-hadoop27-scala_2.11
+  additional_classpath_files: docker.io/plucas/additional-flink-jars:latest
+
+resources:
+  jobmanager:
+    limits:
+      cpu: 1000m
+      memory: 1280Mi
+    requests:
+      cpu: 1000m
+      memory: 1280Mi
+  taskmanager:
+    limits:
+      memory: 1280Mi
+    requests:
+      memory: 1280Mi
+
+flink:
+  jobmanager_heap_mb: 1024
+  taskmanager_heap_mb: 1024
+  num_taskmanagers: 1
+  num_slots_per_taskmanager: 1
