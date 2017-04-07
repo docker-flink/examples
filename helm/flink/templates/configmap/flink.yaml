@@ -12,6 +12,14 @@ data:
     jobmanager.heap.mb: {{ .Values.flink.jobmanager_heap_mb }}
     taskmanager.heap.mb: {{ .Values.flink.taskmanager_heap_mb }}
     taskmanager.numberOfTaskSlots: {{ .Values.flink.num_slots_per_taskmanager }}
+{{- if .Values.flink.highavailability.enabled }}
+    fs.hdfs.hadoopconf: /etc/hadoop/conf
+    high-availability: zookeeper
+    high-availability.jobmanager.port: 6123
+    high-availability.zookeeper.quorum: {{ .Values.flink.highavailability.zookeeper_quorum }}
+    high-availability.cluster-id: {{ template "fullname" . }}
+    high-availability.storageDir: s3a://{{ .Values.flink.highavailability.state_s3_bucket }}/{{ template "fullname" . }}
+{{- end }}
   log4j.properties: |
 {{.Files.Get "config/log4j.properties" | indent 4}}
   logback.xml: |

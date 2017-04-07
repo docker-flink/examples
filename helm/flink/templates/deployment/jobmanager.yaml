@@ -51,11 +51,16 @@ spec:
         volumeMounts:
         - name: {{ template "fullname" . }}-flink-config
           mountPath: /etc/flink
+        - name: {{ template "fullname" . }}-hadoop-config
+          mountPath: /etc/hadoop/conf
         - name: additional-classpath-files
           mountPath: /opt/flink/lib/additional-classpath-files
       volumes:
         - name: {{ template "fullname" . }}-flink-config
           configMap:
             name: {{ template "fullname" . }}-flink-config
+        - name: {{ template "fullname" . }}-hadoop-config
+          configMap:
+            name: {{ template "fullname" . }}-hadoop-config
         - name: additional-classpath-files
           emptyDir: {}
