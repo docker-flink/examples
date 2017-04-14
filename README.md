@@ -1,6 +1,8 @@
 Flink Docker Examples
 =====================
 
+**NOTE**: These resources are in a draft state, and should be used for reference only.
+
 Examples for how to use the Flink Docker images in a variety of ways.
 
 Flink Helm Chart
