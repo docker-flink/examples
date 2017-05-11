@@ -1,6 +1,6 @@
 images:
-  flink: docker.io/plucas/flink:1.2.0-hadoop27-scala_2.11
-  additional_classpath_files: docker.io/plucas/additional-flink-jars:latest
+  flink: docker.io/plucas/flink
+  additional_classpath_files: docker.io/plucas/additional-flink-jars
 
 resources:
   jobmanager:

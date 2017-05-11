@@ -20,7 +20,7 @@
 version: "2.1"
 services:
   jobmanager:
-    image: ${FLINK_DOCKER_IMAGE_NAME:-plucas/flink:latest}
+    image: ${FLINK_DOCKER_IMAGE_NAME:-flink}
     expose:
       - "6123"
     ports:
@@ -30,7 +30,7 @@ services:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
 
   taskmanager:
-    image: ${FLINK_DOCKER_IMAGE_NAME:-plucas/flink:latest}
+    image: ${FLINK_DOCKER_IMAGE_NAME:-flink}
     expose:
       - "6121"
       - "6122"
