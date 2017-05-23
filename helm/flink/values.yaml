@@ -1,6 +1,6 @@
 images:
-  flink: docker.io/plucas/flink
-  additional_classpath_files: docker.io/plucas/additional-flink-jars
+  flink: docker.io/flink
+  additional_classpath_files: docker.io/plucas/additional-flink-jars:empty
 
 resources:
   jobmanager:
