@@ -8,7 +8,7 @@ Examples for how to use the Flink Docker images in a variety of ways.
 Docker Compose
 --------------
 
-Use the [Docker Compose config](docker-compose.yml) in this repo to create a local Flink cluster.
+Use the [Docker Compose config](docker/docker-compose.yml) in this repo to create a local Flink cluster.
 
 See the [docs](https://ci.apache.org/projects/flink/flink-docs-release-1.2/setup/docker.html) for
 information on its usage.
