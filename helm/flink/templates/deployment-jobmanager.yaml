@@ -9,24 +9,11 @@ spec:
       labels:
         app: {{ template "fullname" . }}
         component: jobmanager
-      annotations:
-        pod.beta.kubernetes.io/init-containers: '[
-          {
-            "name": "additional-classpath-files",
-            "image": "{{ .Values.images.additional_classpath_files }}",
-            "imagePullPolicy": "IfNotPresent",
-            "volumeMounts": [
-              {
-                "name": "additional-classpath-files",
-                "mountPath": "/dst"
-              }
-            ]
-          }
-        ]'
     spec:
       containers:
       - name: jobmanager
-        image: {{ .Values.images.flink }}
+        image: {{ .Values.image }}:{{ .Values.imageTag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
         args:
         - jobmanager
         ports:
@@ -34,8 +21,6 @@ spec:
           name: rpc
         - containerPort: 6124
           name: blob
-        - containerPort: 6125
-          name: query
         - containerPort: 8081
           name: ui
         env:
@@ -53,8 +38,6 @@ spec:
           mountPath: /etc/flink
         - name: {{ template "fullname" . }}-hadoop-config
           mountPath: /etc/hadoop/conf
-        - name: additional-classpath-files
-          mountPath: /opt/flink/lib/additional-classpath-files
       volumes:
         - name: {{ template "fullname" . }}-flink-config
           configMap:
@@ -62,5 +45,3 @@ spec:
         - name: {{ template "fullname" . }}-hadoop-config
           configMap:
             name: {{ template "fullname" . }}-hadoop-config
-        - name: additional-classpath-files
-          emptyDir: {}

@@ -1,6 +1,6 @@
-images:
-  flink: docker.io/flink
-  additional_classpath_files: docker.io/plucas/additional-flink-jars:empty
+image: flink
+imageTag: latest
+imagePullPolicy: Always
 
 resources:
   jobmanager:
@@ -21,9 +21,13 @@ flink:
   taskmanager_heap_mb: 1024
   num_taskmanagers: 1
   num_slots_per_taskmanager: 1
-  highavailability:
-    enabled: false
-    zookeeper_quorum: zookeeper-1,zookeeper-2,zookeeper-3
-    state_s3_bucket: some-bucket
-    aws_access_key_id: xxx
-    aws_secret_access_key: yyy
+
+  ## Other config options for flink-conf.yaml
+  #config: |
+  #  some.option: 3
+
+hadoop:
+  core-site.xml: |
+    <?xml version="1.0"?>
+    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    <configuration/>

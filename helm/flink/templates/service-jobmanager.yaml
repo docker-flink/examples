@@ -8,8 +8,6 @@ spec:
     port: 6123
   - name: blob
     port: 6124
-  - name: query
-    port: 6125
   - name: ui
     port: 8081
   selector:
