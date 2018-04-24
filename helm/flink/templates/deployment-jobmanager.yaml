@@ -26,6 +26,12 @@ spec:
         env:
         - name: FLINK_CONF_DIR
           value: /etc/flink
+        livenessProbe:
+          httpGet:
+            path: /overview
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 10
         resources:
           limits:
             cpu: {{ .Values.resources.jobmanager.limits.cpu }}
