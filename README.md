@@ -33,11 +33,13 @@ Deploy an HA Flink cluster with three taskmanagers:
     $ cat > values.yaml <<EOF
     flink:
       num_taskmanagers: 3
-      highavailability:
-        enabled: true
+      config: |
         zookeeper_quorum: <zookeeper quorum string>
         state_s3_bucket: <s3 bucket>
         aws_access_key_id: <aws access key>
         aws_secret_access_key: <aws secret key>
     EOF
+
     $ helm install --name my-cluster --values values.yaml flink*.tgz
+
+Note that the AWS access keys may not be required if you use a role (recommended). Anything under "config: |" will be added to the Flink config file. It's not limited to HA settings.
