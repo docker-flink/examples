@@ -10,6 +10,16 @@ spec:
         app: {{ template "fullname" . }}
         component: jobmanager
     spec:
+      initContainers:
+      - name: flink-copy-libs
+        image: {{ .Values.image }}:{{ .Values.imageTag }}
+        command:
+        - sh
+        - -c
+        - cp /opt/flink/lib/* {{ range .Values.flink.additional_libs}}/opt/flink/opt/{{ . }} {{ end }} /flink-lib;
+        volumeMounts:
+        - name: flink-lib
+          mountPath: /flink-lib
       containers:
       - name: jobmanager
         image: {{ .Values.image }}:{{ .Values.imageTag }}
@@ -44,6 +54,8 @@ spec:
           mountPath: /etc/flink
         - name: {{ template "fullname" . }}-hadoop-config
           mountPath: /etc/hadoop/conf
+        - name: flink-lib
+          mountPath: /opt/flink/lib
       volumes:
         - name: {{ template "fullname" . }}-flink-config
           configMap:
@@ -51,3 +63,5 @@ spec:
         - name: {{ template "fullname" . }}-hadoop-config
           configMap:
             name: {{ template "fullname" . }}-hadoop-config
+        - name: flink-lib
+          emptyDir: {}

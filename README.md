@@ -28,6 +28,10 @@ Deploy a non-HA Flink cluster with three taskmanagers:
 
     $ helm install --name my-cluster --set flink.num_taskmanagers=3 flink*.tgz
 
+Install additional (optional) libraries from the flink distribution (you can only reference libraries from `$FLINK_BASEDIR/opt` here):
+
+	$ helm install --name my-cluster --set flink.additional_libs="{flink-metrics-prometheus-1.4.0.jar,flink-metrics-dropwizard-1.4.0.jar}" flink*.tgz
+
 Deploy an HA Flink cluster with three taskmanagers:
 
     $ cat > values.yaml <<EOF
