@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: {{ template "fullname" . }}-jobmanager
 spec:
+  type: {{ .Values.service.jobManager.serviceType }}
   ports:
   - name: rpc
     port: 6123

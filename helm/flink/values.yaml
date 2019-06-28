@@ -26,6 +26,10 @@ flink:
   #config: |
   #  some.option: 3
 
+service:
+  jobManager:
+    serviceType: NodePort
+
 hadoop:
   core-site.xml: |
     <?xml version="1.0"?>
