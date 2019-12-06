@@ -1,0 +1,21 @@
+apiVersion: v1
+entries:
+  flink:
+  - apiVersion: v1
+    created: "2019-12-06T12:08:30.5362739-05:00"
+    description: Apache Flink® is an open-source stream processing framework for distributed,
+      high-performing, always-available, and accurate data streaming applications.
+    digest: 246a54660d61733fbddf6be0a3ce50f7682cc2740a07d2a5851d24f5edb0e6eb
+    home: https://flink.apache.org
+    icon: https://flink.apache.org/img/logo/png/200/flink_squirrel_200_color.png
+    maintainers:
+    - email: me@patricklucas.com
+      name: Patrick Lucas
+    name: flink
+    sources:
+    - https://github.com/apache/flink
+    - https://github.com/docker-flink/examples
+    urls:
+    - flink-1.4.0.tgz
+    version: 1.4.0
+generated: "2019-12-06T12:08:30.5357601-05:00"
